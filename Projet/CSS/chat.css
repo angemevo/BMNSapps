@@ -1,0 +1,17 @@
+.carousel {
+    position: relative;
+    max-width: 500px; /* Ajustez selon vos besoins */
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .carousel-images {
+    display: flex;
+    transition: transform 0.5s ease; /* Ajoutez une transition fluide */
+  }
+  
+  .carousel-images img {
+    width: 100%;
+    height: auto;
+  }
+  

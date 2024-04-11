@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Stretch</title>
+<style>
+  .stretch-text {
+    font-size: 24px;
+    background-color: #f0f0f0;
+    display: inline-block;
+    padding: 10px;
+  }
+
+  .stretch-text.horizontal {
+    transform: scaleX(2);
+  }
+
+  .stretch-text.vertical {
+    transform: scaleY(2);
+  }
+</style>
+</head>
+<body>
+  <div class="stretch-text">Texte normal</div>
+  <div class="stretch-text horizontal">Texte étiré horizontalement</div>
+  <div class="stretch-text vertical">Texte étiré verticalement</div>
+</body>
+</html>
