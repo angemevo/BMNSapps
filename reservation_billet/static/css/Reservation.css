@@ -1,0 +1,558 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Text';
+}
+
+a{
+    text-decoration: 0;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 9px;
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #FFFF;
+}
+
+body{
+    background-color: #151C21;
+}
+
+section{
+    margin-top: 50px;
+}
+
+header{
+    background-color: #151C21;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 10%;
+}
+
+#logo{
+    width: 100px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+}
+
+.menu li {
+    margin: 0 15px;
+    list-style-type: none;
+}
+
+.menu li a{
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+.btn-reservation{
+    margin-left: 10px;
+    color: #FF690F;
+    font-size: 18px;
+    border: 2px solid #FF690F;
+    padding: 5px 20px;
+    transition: 0.5s;
+    font-weight: bolder;
+}
+
+.btn-reservation:hover{
+    background-color: #FF690F;
+    color: #FFFFFF;
+}
+
+/*Home acceuil css*/
+
+#home{
+    background: linear-gradient(rgba(0,0,0,0.1), #333), url("image/acc.png");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+#home h2{
+    font-size: 34px;
+    margin-bottom: 10px;;
+    color: #FFFFFF;
+}
+
+#home h4{
+    font-size: 50px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+}
+
+#home p{
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.home-btn{
+    margin-bottom: 20px;
+}
+
+.find_trip{
+    background-color: #151C21;
+    padding: 20px;
+    width: 70%;
+    position: absolute;
+    bottom: -50px;
+}
+
+.find_trip form{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.find_trip form div , .find_trip form input[type="submit"]{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+.find_trip form label{
+    color: #FFFFFF;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.find_trip form input{
+    padding: 5px 20px;
+    background-color: transparent;
+    border: 1px solid #FF690F;
+    outline: 0;
+    width: 100%;
+    font-size: 13px;
+    color: #FFFFFF;
+}
+
+.find_trip form input[type="submit"]{
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #FF690F;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.find_trip form input[type="submit"]:hover{
+    box-shadow: 0 0 10px #FF690F;
+}
+
+/* Resultat recherche */
+#recherche{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    padding: 0 10%;
+    width: 100%;
+}
+
+.banner {
+    /* color: #FF690F;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px; */
+    text-transform: capitalize;
+    margin: 70px 0;
+    font-weight: bold;
+    color: #FF690F;
+    position: relative;
+    margin-left: 15px;
+    font-size: 18px;
+}
+
+.banner::after{
+    position: absolute;
+    left: -15px;
+    content: "";
+    height: 100%;
+    background-color: #FFFFFF;
+    width: 5px;
+}
+
+#result-count {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FF690F;
+}
+
+
+.card {
+    position: relative;
+    top: 20px;
+    bottom: 20px;
+    width: 1200px; /* Augmenter la largeur de la carte */
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #FF690F;
+}
+
+.card-header {
+    padding: 15px;
+    background-color: #FF690F;
+    border-bottom: 1px solid #ccc;
+}
+
+.card-title {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-price {
+    position: relative;
+    bottom: 5px;
+    color: #FFFFFF;
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-travels {
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.card-date {
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.card-duration {
+    color: #FFFFFF;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.card-details {
+    font-size: 12px;
+    color: #666;
+}
+
+.card-footer {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-footer p{
+    position: relative;
+    top: 15px;
+    bottom: 15px;
+    font-size: 15px;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+.card-footer a {
+    border: 1px solid #FF690F;
+    color: #FF690F;
+    font-size: 14px;
+    padding: 8px 25px;
+    font-weight: bold;
+}
+
+
+
+
+/*Responsivité*/
+@media screen and (max-width:1360px) {
+    header .menu{
+        display: none;
+    }
+    .btn-reservation{
+        display: none;
+    }
+    /*Home responsive*/
+    #home h2{
+        font-size: 18px;
+        -webkit-text-stroke: 0;
+        color: #FFFFFF;
+    }
+
+    #home h4{
+        font-size: 28px;
+    }
+
+    #home p{
+        text-align: center;
+        font-size: 10px;
+    }
+
+    .find_trip{
+        width: 100%;
+        height: 200px;
+    }
+
+    .find_trip form{
+        flex-wrap: wrap;
+    }
+
+    .find_trip form div{
+        margin-top: 10px;
+        flex-direction: column;
+        width: 47%;
+    }
+
+    .find_trip form input [type="submit"]{
+        width: 47%;
+    }
+
+    .home-btn{
+        display: block;
+    }
+
+    /*Responsive recherche*/
+    .card{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .card-price{
+        margin-top: 10px;
+
+    }
+
+    .card-header{
+        padding: 25px;
+    }
+
+    /*Responsive menu*/
+    .resposive-menu{
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .responsive-menu::after{
+        position: absolute;
+        content: "";
+        height: 3px;
+        background-color: #FF690F ;
+        width: 28px;
+        box-shadow: 0 10px 0 #FF690F;
+        transform: translateY(-10px);
+        transition: 0.5s;
+    }
+
+    .responsive-menu.active::after{
+        box-shadow: 0 0 0 #FF690F;
+        transform: rotate(45deg);
+    }
+
+    .responsive-menu::before{
+        position: absolute;
+        content: "";
+        height: 3px;
+        background-color: #FF690F ;
+        width: 28px;
+        transform: translateY(10px);
+        transition: 0.5s;
+    }
+
+    .responsive-menu.active::before{
+        transform: rotate(-45deg);
+    }
+
+    header .menu.responsive{
+        display: flex;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        flex-direction: column;
+        background-color: #151C21;
+        align-items: unset;
+        animation: animate-menu 1s forwards;
+    }
+
+    header .menu.responsive li{
+        margin: 20px;
+        width: 100px;
+        padding-left: 20px;
+    }
+
+    @keyframes animate-menu{
+        0%{
+            transform: translateY(0);
+        }
+        100%{
+            transform: translateY(100%);
+        }
+    }
+}
+
+@media screen and (max-width:560px) {
+    header .menu{
+        display: none;
+    }
+    .btn-reservation{
+        display: none;
+    }
+    /*Home responsive*/
+    #home h2{
+        font-size: 13px;
+        -webkit-text-stroke: 0;
+        color: #FFFFFF;
+    }
+
+    #home h4{
+        font-size: 22px;
+    }
+
+    #home p{
+        text-align: center;
+        font-size: 10px;
+    }
+
+    .find_trip{
+        width: 100%;
+    }
+
+    .find_trip form{
+        flex-wrap: wrap;
+    }
+
+    .find_trip form div{
+        margin-top: 20px;
+        flex-direction: column;
+        width: 47%;
+    }
+
+    .find_trip form input [type="submit"]{
+        width: 47%;
+    }
+
+    .home-btn{
+        display: block;
+    }
+
+    /*Responsive A propos*/
+    .img-desc{
+        flex-direction: column;
+        width: 100%;
+    }
+
+   .img-desc .right{
+        width: 100%;
+    }
+
+    .img-desc .left video{
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .img-desc .left{
+        margin-bottom: 20px;
+        width: 100%;
+        height: 100%;
+    }
+
+    /*Responsive menu*/
+    .resposive-menu{
+        width: 50px;
+        height: 50px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .responsive-menu::after{
+        position: absolute;
+        right: 10px;
+        content: "";
+        height: 3px;
+        background-color: #FF690F ;
+        width: 28px;
+        box-shadow: 0 10px 0 #FF690F;
+        transform: translateY(-10px);
+        transition: 0.5s;
+    }
+
+    .responsive-menu.active::after{
+        box-shadow: 0 0 0 #FF690F;
+        transform: rotate(45deg);
+    }
+
+    .responsive-menu::before{
+        position: absolute;
+        right: 10px;
+        content: "";
+        height: 3px;
+        background-color: #FF690F ;
+        width: 28px;
+        transform: translateY(10px);
+        transition: 0.5s;
+    }
+
+    .responsive-menu.active::before{
+        transform: rotate(-45deg);
+    }
+
+    header .menu.responsive{
+        display: flex;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        flex-direction: column;
+        background-color: #151C21;
+        align-items: unset;
+        animation: animate-menu 1s forwards;
+    }
+
+    header .menu.responsive li{
+        margin: 20px;
+        width: 100px;
+        padding-left: 20px;
+    }
+
+    @keyframes animate-menu{
+        0%{
+            transform: translateY(0);
+        }
+        100%{
+            transform: translateY(100%);
+        }
+    }
+}

@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/Reserver.css' %}" />
+    <title>BMNS</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'home' %}"><img id="logo" src="{% static 'image/Logo.png' %}" alt="" /></a>
+        </div>
+        <ul class="menu">
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="#a-propos">À propos</a></li>
+            <li><a href="{% url 'destination' %}">Destination</a></li>
+            <li><a href="#contact">Contacts</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'profil' %}">Profil</a></li>
+            <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Connexion</a></li>
+            {% endif %}
+        </ul>
+        <a href="{% url 'reservation' %}" class="btn-reservation">Réserver Maintenant</a>
+        <div class="responsive-menu"></div>
+    </header>
+    <!-- Section accueil -->
+    <section id="home" style="background: linear-gradient(rgba(0,0,0,0.1), #333), url(/static/image/acc.png); background-position: center; background-size: cover; height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; position: relative;">
+        <h2>Nous suivre</h2>
+        <h4>Voyagez en sécurité</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p>Dicta praesentium dignissimos cumque delectus.</p>
+        <a href="#" class="btn-reservation home-btn">Réserver Maintenant</a>
+        <div class="find_trip">
+            {% comment %} {% if car %} {% endcomment %}
+            <form  method="post">
+                {% csrf_token %}
+                <!-- Informations du trajet -->
+                <div>
+                    <input type="hidden" name="car_id" value="{{ car.id }}">
+                </div>
+                
+                <!-- Choisir un siège -->
+                <div>
+                    <label for="seat_number">Numéro de siège:</label>
+                    <select id="seat_number" name="siege">
+                        {% for seat in place %}
+                        <option value="{{ seat }}">{{ seat }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <!-- Autres champs du formulaire pour les informations du client -->
+                <div>
+                    <label for="nom">Nom:</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                <div>
+                    <label for="prenom">Prénom:</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+                <div>
+                    <label for="contact">Contact:</label>
+                    <input type="tel" id="contact" name="contact" required>
+                </div>
+                <input type="submit" value="Confirmer et générer le billet">
+            </form>
+            {% comment %} {% else %}
+            <p>Aucun car trouvé.</p>
+            {% endif %} {% endcomment %}
+        </div>
+    </section>
+    <script>
+        var toggle_menu = document.querySelector('.responsive-menu');
+        var menu = document.querySelector('.menu');
+        toggle_menu.onclick = function() {
+            toggle_menu.classList.toggle('active');
+            menu.classList.toggle('responsive')
+        }
+    </script>
+</body>
+</html>

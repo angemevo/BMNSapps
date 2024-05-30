@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Text';
+}
+
+a{
+    text-decoration: 0;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 9px;
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #FFFF;
+}
+
+body{
+    background-color: #151C21;
+}
+
+section{
+    margin-top: 50px;
+}
+
+header{
+    background-color: #151C21;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 10%;
+}
+
+#logo{
+    width: 100px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+}
+
+.menu li {
+    margin: 0 15px;
+    list-style-type: none;
+}
+
+.menu li a{
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+.menu li a:hover{
+    color: #FF690F;
+}
+
+.btn-reservation{
+    margin-left: 10px;
+    color: #FF690F;
+    font-size: 18px;
+    border: 2px solid #FF690F;
+    padding: 5px 20px;
+    transition: 0.5s;
+    font-weight: bolder;
+}
+
+.btn-reservation:hover{
+    background-color: #FF690F;
+    color: #FFFFFF;
+}
+
+.billets{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.mesg{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 300px;
+    transform: translate(-50%,-50%);
+}
+
+.mesg h4{
+    color: #FFFFFF;
+    font-size: 30px;
+}
+
+.billet {
+    padding-top: 20px;
+    background-color: #FFFFFF;
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.billet h2 {
+    margin-top: 0;
+}
+.infos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.infos div {
+    width: 45%;
+    margin-bottom: 10px;
+}
+.infos div label {
+    display: block;
+    margin-bottom: 5px;
+}
+.infos div span {
+    font-weight: bold;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}

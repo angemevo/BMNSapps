@@ -1,0 +1,601 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Text';
+}
+
+a{
+    text-decoration: 0;
+}
+
+html{
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 9px;
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #FFFF;
+}
+
+body{
+    background-color: #151C21;
+}
+
+section{
+    margin-top: 50px;
+}
+
+header{
+    background-color: #151C21;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 10%;
+}
+
+#logo{
+    width: 100px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+}
+
+.menu li {
+    margin: 0 15px;
+    list-style-type: none;
+}
+
+.menu li a{
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+.menu li a:hover{
+    color: #FF690F;
+}
+
+.btn-reservation{
+    color: #FF690F;
+    font-size: 18px;
+    border: 2px solid #FF690F;
+    padding: 5px 20px;
+    transition: 0.5s;
+    font-weight: bolder;
+}
+
+.btn-reservation:hover{
+    background-color: #FF690F;
+    color: #FFFFFF;
+}
+
+#profile{
+	border-radius: 5px;
+	padding-top: 20px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    padding: 0 10%;
+    width: 100%;
+}
+
+.pro{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	padding: 50px 0;
+}
+
+.profil {
+	left: -50%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	padding: 50px 0;
+	width: 100%;
+	height: 70%;
+	box-shadow: 0 0 10px rgba(255, 105, 15, 1);
+}
+.tit{
+	position: relative;
+	left: -500px;
+	margin-bottom: 20px;
+	text-align: start;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.title{
+    text-transform: capitalize;
+    /* margin: 70px 0; */
+    font-weight: bold;
+    color: #FF690F;
+    position: relative;
+    margin-left: 15px;
+    font-size: 18px;
+}
+
+.title::after{
+    position: absolute;
+    left: -15px;
+    content: "";
+    height: 100%;
+    background-color: #FFFFFF;
+    width: 5px;
+}
+
+.user-info {
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(255, 105, 15, 1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 30px;
+	margin-bottom: 50px;
+}
+
+.img-pro{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+
+.user-info img {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+
+.user-info h2 {
+	margin-bottom: 10px;
+	color: #FFFFFF;
+}
+
+.user-info p {
+	margin-bottom: 30px;
+	color: #FFFFFF;
+}
+
+.user-info h3 {
+	margin-bottom: 20px;
+	color: #FFFFFF;
+}
+
+.user-info ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.user-info li {
+	margin-bottom: 10px;
+}
+
+.user-info a {
+	color: #FFFFFF;
+	text-decoration: none;
+	display: block;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.user-info a:hover {
+	background-color: #FF690F;
+}
+
+.user-settings {
+	bottom: -30%;
+	background-color: #151C21;
+	position: relative;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(255, 105, 15, 1);
+	padding: 30px;
+	width: 50%;
+}
+
+.user-settings h3{
+    text-transform: capitalize;
+    /* margin: 70px 0; */
+    font-weight: bold;
+    color: #FF690F;
+    position: relative;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.contain{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.contain h1{
+    color: #FFFFFF;
+    margin-bottom: 30px;
+}
+
+.contain span{
+    color: #FF690F;
+}
+
+.card{
+    padding-left: 15px;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    border-radius: 5px;
+	box-shadow: 0 0 10px rgba(255, 105, 15, 1);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 0 10%; */
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+}
+
+.tete{
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #FF690F;
+}
+
+.card-title{
+    padding-right: 20px;
+    color: #FFFFFF;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.card-price{
+    padding-right: 20px;
+    color: #FFFFFF;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.card-date{
+    padding-right: 20px;
+    color: #FFFFFF;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.card-details{
+    padding-right: 20px;
+    color: #FFFFFF;
+    font-size: medium;
+    font-weight: bold;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+}
+
+footer .contact {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+footer .contact h4 {
+	margin-bottom: 20px;
+}
+
+footer .contact p {
+	margin-bottom: 10px;
+}
+
+footer .social-media {
+	display: flex;
+	align-items: center;
+}
+
+footer .social-media a {
+	color: #fff;
+	margin-right: 20px;
+	font-size: 24px;
+}
+
+footer .social-media a:hover {
+	color: #ccc;
+}
+
+@media screen and (max-width:1360px) {
+    header .menu{
+        display: none;
+    }
+    .btn-reservation{
+        display: none;
+    }
+    /*Home responsive*/
+    #home h2{
+        font-size: 18px;
+        -webkit-text-stroke: 0;
+        color: #FFFFFF;
+    }
+
+    #home h4{
+        font-size: 28px;
+    }
+
+    #home p{
+        text-align: center;
+        font-size: 10px;
+    }
+
+    .find_trip{
+        width: 100%;
+        height: 200px;
+    }
+
+    .find_trip form{
+        flex-wrap: wrap;
+    }
+
+    .find_trip form div{
+        margin-top: 10px;
+        flex-direction: column;
+        width: 47%;
+    }
+
+    .find_trip form input [type="submit"]{
+        width: 47%;
+    }
+
+    .home-btn{
+        display: block;
+    }
+
+    /*Responsive recherche*/
+    .card{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .card-price{
+        margin-top: 10px;
+
+    }
+
+    .card-header{
+        padding: 25px;
+    }
+
+    /*Responsive menu*/
+    .resposive-menu{
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .responsive-menu::after{
+        position: absolute;
+        content: "";
+        height: 3px;
+        background-color: #FF690F ;
+        width: 28px;
+        box-shadow: 0 10px 0 #FF690F;
+        transform: translateY(-10px);
+        transition: 0.5s;
+    }
+
+    .responsive-menu.active::after{
+        box-shadow: 0 0 0 #FF690F;
+        transform: rotate(45deg);
+    }
+
+    .responsive-menu::before{
+        position: absolute;
+        content: "";
+        height: 3px;
+        background-color: #FF690F ;
+        width: 28px;
+        transform: translateY(10px);
+        transition: 0.5s;
+    }
+
+    .responsive-menu.active::before{
+        transform: rotate(-45deg);
+    }
+
+    header .menu.responsive{
+        display: flex;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        flex-direction: column;
+        background-color: #151C21;
+        align-items: unset;
+        animation: animate-menu 1s forwards;
+    }
+
+    header .menu.responsive li{
+        margin: 20px;
+        width: 100px;
+        padding-left: 20px;
+    }
+
+    @keyframes animate-menu{
+        0%{
+            transform: translateY(0);
+        }
+        100%{
+            transform: translateY(100%);
+        }
+    }
+}
+
+@media screen and (max-width:560px) {
+    header .menu{
+        display: none;
+    }
+    .btn-reservation{
+        display: none;
+    }
+    /*Home responsive*/
+    #home h2{
+        font-size: 13px;
+        -webkit-text-stroke: 0;
+        color: #FFFFFF;
+    }
+
+    #home h4{
+        font-size: 22px;
+    }
+
+    #home p{
+        text-align: center;
+        font-size: 10px;
+    }
+
+    .find_trip{
+        width: 100%;
+    }
+
+    .find_trip form{
+        flex-wrap: wrap;
+    }
+
+    .find_trip form div{
+        margin-top: 20px;
+        flex-direction: column;
+        width: 47%;
+    }
+
+    .find_trip form input [type="submit"]{
+        width: 47%;
+    }
+
+    .home-btn{
+        display: block;
+    }
+
+    /*Responsive A propos*/
+    .title{
+		text-transform: capitalize;
+		/* margin: 70px 0; */
+		font-weight: bold;
+		color: #FF690F;
+		position: relative;
+		margin-left: 15px;
+		font-size: 18px;
+	}
+
+	.img-desc .right{
+        width: 100%;
+    }
+
+    .img-desc .left video{
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .img-desc .left{
+        margin-bottom: 20px;
+        width: 100%;
+        height: 100%;
+    }
+
+    /*Responsive menu*/
+    .resposive-menu{
+        width: 50px;
+        height: 50px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .responsive-menu::after{
+        position: absolute;
+        right: 10px;
+        content: "";
+        height: 3px;
+        background-color: #FF690F ;
+        width: 28px;
+        box-shadow: 0 10px 0 #FF690F;
+        transform: translateY(-10px);
+        transition: 0.5s;
+    }
+
+    .responsive-menu.active::after{
+        box-shadow: 0 0 0 #FF690F;
+        transform: rotate(45deg);
+    }
+
+    .responsive-menu::before{
+        position: absolute;
+        right: 10px;
+        content: "";
+        height: 3px;
+        background-color: #FF690F ;
+        width: 28px;
+        transform: translateY(10px);
+        transition: 0.5s;
+    }
+
+    .responsive-menu.active::before{
+        transform: rotate(-45deg);
+    }
+
+    header .menu.responsive{
+        display: flex;
+        position: absolute;
+        top: -200px;
+        right: 0;
+        padding-right: 15px;
+        flex-direction: column;
+        background-color: #151C21;
+        align-items: unset;
+        animation: animate-menu 1s forwards;
+    }
+
+    header .menu.responsive li{
+        margin: 20px;
+        width: 100px;
+        padding-left: 20px;
+    }
+
+    @keyframes animate-menu{
+        0%{
+            transform: translateY(0);
+        }
+        100%{
+            transform: translateY(100%);
+        }
+    }
+}

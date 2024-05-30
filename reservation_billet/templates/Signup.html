@@ -1,0 +1,86 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static "css/Signup.css" %}>
+    <title>Sign Up</title>
+</head>
+<body style = "background-image: url(/static/image/Bus.jpg);
+padding: 0;
+margin: 0;
+font-family: "Montserrat", sans-serif;
+font-weight: 500;
+background-size: cover;
+background-repeat: no-repeat;
+}">
+    <div class="split-screen">
+        <div class="left">
+            <section class="copy">
+                <h1>Bienvenue sur</h1>
+                <img src={% static "image/Logo.png" %} alt="">
+            </section>
+        </div>
+        <div class="right">
+            <form action="" method="post">
+                {% csrf_token %}
+                <section class="copy">
+                    <h2>Inscription</h2>
+                    <div class="login-container">
+                        <p>Dejà membre ? <a href={% url 'login' %}><strong>Se connecter</strong></a></p>
+                    </div>
+                </section>
+                <div class="container">
+                    <div class="input-container username">
+                        <label for="fname">Nom d'utilisateur<span>*</span></label>
+                        <input type="text" id="pseudo" name="pseudo" placeholder="Your Pseudo">
+                    </div>
+                    <div class="input-container name">
+                        <label for="fname">Nom<span>*</span></label>
+                        <input type="text" id="nom" name="nom" placeholder="Your Name">
+                    </div>
+                    <div class="input-container First name">
+                        <label for="fname">Prenom<span>*</span></label>
+                        <input type="text" id="nom" name="prenom" placeholder="Your First Name">
+                    </div>
+                    <div class="input-container email">
+                        <label for="email">Email<span>*</span></label>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com">
+                    </div>
+                    <div class="input-container Adresse">
+                        <label for="fname">Adresse<span>*</span></label>
+                        <input type="text" id="Adresse" name="Adresse" placeholder="Your Adresse">
+                    </div>
+                    <div class="input-container Contact">
+                        <label for="fname">Contact<span>*</span></label>
+                        <input type="tel" id="contact" name="contact" placeholder="Your Contact">
+                    </div>
+                    <div class="input-container password">
+                        <label for="password">Mot de passe<span>*</span></label>
+                        <input type="password" id="password" name="password" placeholder="At least 6 caracter">
+                    </div>
+                    <div class="input-container password">
+                        <label for="password">Confirme Mot de passe<span>*</span></label>
+                        <input type="password" id="password" name="password" placeholder="At least 6 caracter">
+                    </div>
+                </div>
+                {% comment %} <div class="input-container cta">
+                    <label class="checkbox-container">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        Sign Up for email update.
+                    </label>
+                </div> {% endcomment %}
+                <button class="signup-btn" type="submit">S'inscrire</button>
+                <section class="copy legal">
+                    <p>
+                        <span class="small">En continuant vous accepter notre <br />
+                        <a href="#">politique de confidentialité </a>&amp;<a href="#"> Conditions de services</a></span>
+                    </p>
+                </section>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

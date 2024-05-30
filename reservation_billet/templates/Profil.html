@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Profile User</title>
+    <link rel="stylesheet" type="text/css" href={% static "css/Profil.css" %}>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href={% url 'home' %}><img id="logo" src={% static "image/Logo.png" %} alt=""></a>
+        </div>
+        <ul class="menu">
+            <li><a href={% url 'home' %}>Acceuil</a></li>
+            <li><a href="#a-propos">A propos</a></li>
+            <li><a href="#">Destination</a></li>
+            <li><a href="#contact">Contacts</a></li>
+            <li><a href={% url 'login' %}>Connexion</a></li>
+        </ul>
+        <a href={% url 'reservation' %} class="btn-reservation">Reserver Maintenant</a>
+    
+        <div class="responsive-menu"></div>
+    </header>
+    <section id="profile">
+        <div class="pro">
+            <div class="tit">
+                <h3 class="title">Profil Utilisateur</h3>
+            </div>
+            <div class="profil">
+                <div class="user-info">
+                    <div class="img-pro">
+                        <img src="{% static 'image/user.jpeg' %}" alt="User">
+                    </div>
+                    <h2>profile.Contact</h2>
+                    <p>Email de l'utilisateur</p>
+                    <ul>
+                        <li><a href="#" data-target="info-personnelles">Informations personnelles</a></li>
+                        <li><a href="#" data-target="mes-reservations">Mes réservations</a></li>
+                        <li><a href="#">Déconnexion</a></li>
+                    </ul>
+                </div>
+                <div id="info-personnelles" class="user-settings">
+                    <h3>Informations personnelles</h3>
+                    <div class="contain">
+                        <h1>Nom : <span>{{client.user.first_name}}</span></h1>
+                        <h1>Prenom : <span>{{client.user.last_name}}</span></h1>
+                        <h1>Contact : <span>{{client.Contact}}</span></h1>
+                        <h1>Email : <span>{{client.user.email}}</span></h1>
+                        <h1>Adresse : <span>{{client.Adresse}}</span></h1>
+                    </div>
+                    <a href="#" class="btn-reservation">Modifier</a>
+                </div>
+                <div id="mes-reservations" class="user-settings" style="display: none;">
+                    <h3>Mes réservations</h3>
+                    {% for reservation in reservation %}
+					<div class="contain">
+                        <div class="card">
+                            <div class="box">
+                                <div class="tete">Trajet</div>
+                                <div class="card-title">{{reservation.trajet.Ville_Depart}} - {{reservation.trajet.Ville_Arrivée}}</div>
+                            </div>
+                            <div class="box">
+                                <div class="tete">Prix</div>
+                                <div class="card-price">{{reservation.trajet.Prix}} Francs CFA</div>
+                            </div>
+                            <div class="box">
+                                <div class="tete">Date</div>
+                                <div class="card-date">{{reservation.trajet.Date}}</div>
+                            </div>
+                            <div class="box">
+                                <div class="tete">Heure de Départ</div>
+                                <div class="card-details">{{reservation.trajet.Heure_Depart}}</div>
+                            </div>
+                            {% comment %} <div class="box">
+                                <div class="tete">Statut</div>
+                                <div class="card-details">Effectué</div>
+                            </div> {% endcomment %}
+                        </div>
+                    </div>
+					{% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="contact">
+            <h4>Contactez-nous</h4>
+            <p>Email : info@mytravelagency.com</p>
+            <p>Téléphone : 1-800-123-4567</p>
+        </div>
+        <div class="social-media">
+            <h4>Suivez-nous</h4>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('.user-info a');
+            var settingsDivs = document.querySelectorAll('.user-settings');
+
+            links.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var targetId = link.getAttribute('data-target');
+
+                    settingsDivs.forEach(function(div) {
+                        if (div.id === targetId) {
+                            div.style.display = 'block';
+                        } else {
+                            div.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        var toggle_menu = document.querySelector(".responsive-menu");
+        var menu = document.querySelector(".menu");
+        toggle_menu.onclick = function () {
+            toggle_menu.classList.toggle("active");
+            menu.classList.toggle("responsive");
+        };
+    </script>
+</body>
+</html>
