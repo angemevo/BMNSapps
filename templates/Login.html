@@ -1,0 +1,54 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= {% static "css/Login.css" %}>
+    <title>Login</title>
+</head>
+<body style = "background-image: url(/static/image/Bus.jpg);
+padding: 0;
+margin: 0;
+font-family: "SF Pro Text";
+font-weight: 500;">
+    <div class="split-screen">
+        <div class="left">
+            <section class="copy">
+                <h1>Welcome To</h1>
+                <img src={% static "image/Logo.png" %} alt="">
+            </section>
+        </div>
+        <div class="right">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <section class="copy">
+                    <h2>Login</h2>
+                    <div class="login-container">
+                        <p>No member? <a href={% url 'signup' %}><strong>Sign Up</strong></a></p>
+                    </div>
+                </section>
+                <div class="input-container username">
+                    <label for="fname">Username</label>
+                    {% comment %} <input type="text" id="pseudo" name="pseudo" placeholder="Your Pseudo"> {% endcomment %}
+                    {{form.username}}
+                </div>
+                <div class="input-container password">
+                    <label for="password">Password</label>
+                    {% comment %} <input type="password" id="password" class="password" placeholder="Must be at least 6 caracter"> {% endcomment %}
+                    {{form.password}}
+                    <div class="error"></div>
+                </div>
+                <button class="signup-btn" type="submit">Login</button>
+                <section class="copy legal">
+                    <p>
+                        <span class="small">By continuing, you agree to accept our <br />
+                        <a href="#">Privacy Policy </a>&amp;<a href="#"> Terms of services</a></span>
+                    </p>
+                </section>
+            </form>
+        </div>
+    </div>
+    <script src="script.js" charset="utf-8"></script>
+</body>
+</html>
