@@ -26,18 +26,30 @@ h2{
     font-weight: 700;
 }
 
-.alert {
+.error {
+    color: white;
+    background-color: #f44336; /* Rouge */
+    border-radius: 6px; /* Bordures arrondies */
+    padding: 10px; /* Ajout d'un padding pour un meilleur espacement */
+    margin-bottom: 10px;
+    display: none; /* Masqué par défaut */
+    font-size: 13px;
+}
+
+
+
+
+.success {
     padding: 20px;
     margin-top: 20px;
+    margin-bottom: 10px;
     color: #FFFFFF;
     font-size: 13px;
+    background-color: #4CAF50; /* Vert pour le succès */
     border-radius: 6px;
     transition: all 0.3s ease;
 }
 
-.sucess {
-    background-color: #FF690F;
-}
 
 .closebtn{
     margin-left: 15px;

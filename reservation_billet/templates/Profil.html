@@ -10,13 +10,14 @@
         <div class="logo">
             <a href={% url 'home' %}><img id="logo" src={% static "image/Logo.png" %} alt=""></a>
         </div>
-        <ul class="menu">
-            <li><a href={% url 'home' %}>Acceuil</a></li>
-            <li><a href="#a-propos">A propos</a></li>
-            <li><a href="#">Destination</a></li>
-            <li><a href="#contact">Contacts</a></li>
-            <li><a href={% url 'login' %}>Connexion</a></li>
-        </ul>
+			<ul class="menu">
+				<li><a href={% url 'home' %}>Acceuil</a></li>
+				<li><a href="#a-propos">A propos</a></li>
+				<li><a href="#">Destination</a></li>
+				<li><a href="#contact">Contacts</a></li>
+				<li><a href="#">Profil</a></li>
+				{% comment %} <li><a href={% url 'login' %}>Connexion</a></li> {% endcomment %}
+			</ul>
         <a href={% url 'reservation' %} class="btn-reservation">Reserver Maintenant</a>
     
         <div class="responsive-menu"></div>
@@ -24,15 +25,15 @@
     <section id="profile">
         <div class="pro">
             <div class="tit">
-                <h3 class="title">Profil Utilisateur</h3>
+                <h3 class="title">Bienvenue sur votre espace {{client.user.first_name}} {{client.user.last_name}}</h3>
             </div>
             <div class="profil">
                 <div class="user-info">
-                    <div class="img-pro">
+                    {% comment %} <div class="img-pro">
                         <img src="{% static 'image/user.jpeg' %}" alt="User">
-                    </div>
-                    <h2>profile.Contact</h2>
-                    <p>Email de l'utilisateur</p>
+                    </div> {% endcomment %}
+                    <h2>{{client.user.first_name}} {{client.user.last_name}}</h2>
+                    <p>{{client.user.email}}</p>
                     <ul>
                         <li><a href="#" data-target="info-personnelles">Informations personnelles</a></li>
                         <li><a href="#" data-target="mes-reservations">Mes réservations</a></li>
@@ -42,8 +43,8 @@
                 <div id="info-personnelles" class="user-settings">
                     <h3>Informations personnelles</h3>
                     <div class="contain">
-                        <h1>Nom : <span>{{client.user.first_name}}</span></h1>
-                        <h1>Prenom : <span>{{client.user.last_name}}</span></h1>
+                        <h1>Nom : <span>{{client.user.last_name}}</span></h1>
+                        <h1>Prenom : <span>{{client.user.first_name}}</span></h1>
                         <h1>Contact : <span>{{client.Contact}}</span></h1>
                         <h1>Email : <span>{{client.user.email}}</span></h1>
                         <h1>Adresse : <span>{{client.Adresse}}</span></h1>

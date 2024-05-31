@@ -1,0 +1,490 @@
+body{
+ 
+    background-color: #151C21;  
+}
+.premiere{
+  
+}
+ main{
+    width: 80%;
+    margin: auto;
+ }
+                                                /* en tete */
+header{
+    position: relative;
+    display: flex;
+    align-items: center;
+   justify-content: space-between;
+}
+header img{
+    width: 150px;
+
+}
+nav.nav{
+  
+    display: flex;
+    list-style: none;
+    width: 300px;
+    margin-left: 700px;
+    justify-content:space-around;
+}
+#menu{
+  background-color:#151C21;
+  color: white;
+  border-color: #151C21;
+}
+.nav a{
+  text-decoration: none;
+  color: white;
+}
+nav.nav li{
+color: white;
+}
+                                 /* image defilente */
+
+.defile{
+    position: relative;
+    bottom: 90px;
+}
+.h{
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Montserrat;
+    position: relative;
+    left: 300px;
+    top: 120px;
+
+}
+.im{
+    width: 200px;
+}
+.ou{
+    position: relative;
+    left: 900px;
+}
+.carousel {
+    position: absolute;
+    left: 350px;
+    max-width: 1000px; /* Ajustez selon vos besoins */
+    max-height: 600px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 100px;
+    bottom: -70px;
+  }
+  
+  .carousel-images {
+    display: flex;
+    transition: transform 0.5s ease; /* Ajoutez une transition fluide */
+  }
+  
+  .carousel-images img {
+    width: 100%;
+    height: auto;
+  }
+  
+                                      /* Reserve de billet */
+  label{
+    color: white;
+    font-size: 20px;
+  
+  }
+  input{
+    width: 500px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #151C21;
+    color: white;
+  }
+  #choix{
+    width: 500px;
+    height: 40px;
+    background-color: #151C21;
+    color: white;
+    border-radius: 10px;
+  }
+  .reserve_billet{
+position: relative;
+top: 700px;
+left: 100px;
+
+  }
+  .reserve{
+    display: flex;
+    justify-items: center;
+    position: relative;
+    left: 100px;
+  }
+  .droit{
+    position: relative;
+    left: 50px;
+  }
+  .hh{
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    font-family: Montserrat;
+  }
+  .valider{
+    position: relative;
+    top: 10px;
+    width: 1070px;
+    left: 95px;
+  }
+  #valider{
+    position: relative;
+    width: 1070px;
+    left: 95px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  #for{
+    position: relative;
+    left: 600px;
+  }
+  ol{
+    color: rgba(255, 255, 255, 0.63);
+    
+   
+  }
+  ul{
+  
+  }
+  .explication{
+    transform: translateX(400px);
+    position: relative;
+    top: 800px;
+  }
+  .to{
+    position: absolute;
+    left: -500px;
+    width: 500px;
+    top: -100px;
+  }
+  .ta{
+    position: absolute;
+    right: 100px;
+    width: 500px;
+    top: -100px;
+  }
+                                                   /* service */
+  .service{
+    position: relative;
+    top:  900px;
+  }
+  .server{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+  }
+  .blow{
+  display: flex;
+   position: relative;
+   top:25px;
+  }
+  .bloc1{
+    padding:30px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+  
+  }
+  .bloc2{
+    padding:30px;
+    width: 300px;
+    height: 350px;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+     left: 40px;
+  }
+  .bloc3{
+    padding:30px;
+     text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    position: relative;
+   left: 70px;
+  }
+  .bloc4{
+    padding:30px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    position: relative;
+left: 100px;
+  }
+  .n{
+  font-weight: bold;
+  font-size: 30px;
+  }
+  .para{
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   transform: translateY(20px);
+  }
+  .ba{
+    font-size: 30px;
+  transform: translateY(40px);
+  font-weight: bolder;
+  }
+  .a{
+    color:orangered;
+  }
+  .bm{
+    color: orangered;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .bc{
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  
+  }
+  .bb{
+    font-size: 30px;
+    transform: translateY(10px);
+  font-weight: bolder;
+  }
+  .cb{
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transform: translateY(10px);
+  }
+  .cc{
+    font-size: 30px;
+    transform: translateY(20px);
+    font-weight: bolder;
+  }
+  .db{
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transform: translateY(10px);
+    
+  }
+  .dd{
+    font-size: 30px;
+    transform: translateY(20px);
+    font-weight: bolder;
+  }
+  .voir{
+    background-color: orangered;
+    font-size: 25px;
+   position: relative;top: 70px;
+    transform: translateX(550px);
+    width: 300px;
+  }
+  .ll{
+    background-color: red;
+        position:absolute;
+       top: 180px;
+    
+    width: 30px;
+  }
+  .la{
+    width: 30px;
+    background-color: red;
+  }
+  .li{
+    width: 30px;
+    background-color: red;
+  }
+  .ly{
+    width: 30px;
+    background-color: red;
+  }
+                            /*          DESCRIPTION  */
+  .describe{
+    display: flex;
+    padding-left: 20px;
+    padding-top: 200px;
+  }
+  .left{
+    transform: translateX(100px);
+  }
+  .rit{
+    width: 500px;
+    border-radius: 10px;
+    transform: translateX(200px);
+  }
+  .l{
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+  }
+  .f{
+    color: white;
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .k{
+    color: white;
+    font-size: 20px;
+
+  }
+  .ui{
+   
+    color: white;
+    text-decoration: none;
+   font-size: 30px;
+   background-color: orangered;
+   border-radius: 10px;
+ position: relative;
+ left: 10px;
+ top: 10px;
+  }
+                                              /* PAYS */
+.pays{
+  width: 80%;
+  margin: auto; 
+ }
+ .diapo{
+  position: relative;
+  overflow: hidden;
+ }
+.elements{
+  display: flex;
+
+}
+.element{
+  flex: 1 0 100%;
+  position: relative;
+}
+.element > img{
+  width: 100%;
+  border-radius: 40px;
+}
+.caption{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+ color: white;
+  transform: translate(-50%,-50%);
+  padding: 10px;
+  text-align: center;
+}
+.moins{
+position: absolute;
+top: 80%;
+color: white;
+font-size: 70px; 
+font-weight: bold; 
+transform: translateY(-120px);
+cursor: pointer;
+}
+.plus{
+  position: absolute;
+  top: 40%;
+  color: white;
+   font-size: 70px; 
+   font-weight: bold; 
+   transform: translateX(1025px);
+   cursor: pointer;
+}
+.zz{
+  font-size: 20px;
+}
+.z{
+  background-color: orangered;
+  color: white;
+  font-size: 25px;
+  border-radius: 5pc;
+}
+                                                                 /* CARTE */
+  .describ{
+    display: flex;
+    position: relative;
+    top: 100px;
+  }
+  .righ{
+    transform: translateX(-90px);
+  }
+  .lef{
+    transform: translateX(220px);
+  }
+  .le{
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+  }
+  .fe{
+    color: white;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .uu{
+   color: orangered;
+   
+   font-size: 30px;
+ position: relative;
+ left: 10px;
+ top: 10px;
+  }
+                   /* FOOTER */
+  footer{
+background-color: white;
+position: relative;
+top: 1000px;
+  }
+  .groupe{
+    display: flex;
+    justify-content: space-between;
+  }
+  .om{
+    width: 100px;
+  }
+  .am{
+    display: flex;
+  }
+  .m{
+    width: 100px;
+  }
+  .ot{
+    width: 20px;
+    position: relative;
+    left: -10px;
+  }
+  .groupe a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+      font-family: 'Times New Roman', Times, serif;
+  }
+  .groupe h3{
+    transform: translateX(50px);
+    font-weight: bolder;
+    font-size: 27px;
+  }
+  .groupe p{
+    margin: 50px;
+  }
+  .fot{
+    display: flex;
+    justify-content: space-between;
+  }
+  .fot p{
+    font-size: 23px;
+    font-weight: lighter;
+  }
+  .fot a{
+    color: orangered;
+    font-size: 30px;
+    font-weight: bold;
+  }
+ .pp{
+  font-size: 20px;
+ }
+   

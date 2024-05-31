@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Shape</title>
+<style>
+    img{
+        width: 400px;
+    }
+  .rounded-image {
+    border-radius: 50%;
+  }
+
+  .custom-shape {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+
+  .rotate-image {
+    transform: rotate(45deg);
+  }
+</style>
+</head>
+<body>
+  <img src="../images/car 2.jpg" alt="Your Image" class="rounded-image">
+  <img src="../images/car 3.jpg" alt="Your Image" class="custom-shape">
+  <img src="../images/car 4.jpg" alt="Your Image" class="rotate-image">
+</body>
+</html>
