@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static 
 
 urlpatterns = [
     path('', views.home, name="home"),
@@ -16,4 +18,6 @@ urlpatterns = [
     path('billet/<int:billet_id>/', views.billet, name="billet"),
     path('about/', views.about, name="about"),
     path('generate_ticket/', views.generate_ticket, name="generate_ticket"),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG == True:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
