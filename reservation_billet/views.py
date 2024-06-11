@@ -237,3 +237,6 @@ def profil(request):
         'client':client
     }
     return render(request, 'Profil.html', context)
+
+def about(request):
+    return render(request, 'About.html')

@@ -14,10 +14,15 @@
         </div>
         <ul class="menu">
             <li><a href={% url 'home' %}>Acceuil</a></li>
-            <li><a href="#a-propos">A propos</a></li>
+            <li><a href={% url 'about' %}>A propos</a></li>
             <li><a href="#">Destination</a></li>
-            <li><a href="#contact">Contacts</a></li>
-            <li><a href={% url 'login' %}>Connexion</a></li>
+            {% comment %} <li><a href="#contact">Contacts</a></li> {% endcomment %}
+            {% if user.is_authenticated %}
+            <li><a href={% url 'profil' %}>Profil</a></li>
+            <li><a href={% url 'logout' %}>Déconnexion</a></li>
+            {% else%}
+            <li><a href= {% url 'login' %}>Connexion</a></li>
+            {% endif %}
         </ul>
         <a href={% url 'reservation' %} class="btn-reservation">Reserver Maintenant</a>
     

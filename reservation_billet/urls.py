@@ -15,5 +15,6 @@ urlpatterns = [
     path('confirmation/', views.confirmation, name="confirmation"),
     # path('deconnexion/', views.deconnexion, name="logout"),
     path("reserve/<int:trajet_id>/", views.reservation_voyage, name='reserve'),
-    path('billet/', views.billet, name="billet")
+    path('billet/', views.billet, name="billet"),
+    path('about/', views.about, name="about")
 ]

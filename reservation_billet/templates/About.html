@@ -1,0 +1,169 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static "css/About.css" %}>
+    <title>BMNS</title>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="#"><img id="logo" src={% static "image/Logo.png" %} alt="" /></a>
+            </div>
+            <ul class="menu">
+                <li><a href={% url 'home' %}>Acceuil</a></li>
+                <li><a href={% url 'about' %}>A propos</a></li>
+                <li><a href={% url 'destination' %}>Destination</a></li>
+                {% comment %} <li><a href="#contact">Contacts</a></li> {% endcomment %}
+                {% if user.is_authenticated %}
+                <li><a href={% url 'profil' %}>Profil</a></li>
+                <li><a href={% url 'logout' %}>Déconnexion</a></li>
+                {% else%}
+                <li><a href= {% url 'login' %}>Connexion</a></li>
+                {% endif %}
+                
+            </ul>
+            <a href={% url 'reservation' %} class="btn-reservation">Reserver Maintenant</a>
+    
+            <div class="responsive-menu"></div>
+        </header>
+    <!-- acceuil section -->
+    <!-- <section id="home">
+        <h2>Nous suivre</h2>
+        <h4>Voyagez en securité</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <p>Dicta praesentium dignissimos cumque delectus.</p>
+        
+    </section> -->
+    <!--A propos section-->
+    <section id="a-propos">
+        <h1 class="title">Qui nous sommes et ce que nous faisons</h1>
+        <div class="img-desc">
+        <div class="left">
+            <video src={% static "image/video.mp4" %} autoplay loop></video>
+        </div>
+        <div class="right">
+            <h3>A propros de BMNS</h3>
+            <p>BMNS a été créée pour rendre les voyages en bus plus faciles et accessibles pour tout le monde. Depuis le début, nous travaillons pour offrir un service de réservation de billets de bus simple et fiable, afin que nos clients puissent voyager confortablement et en toute sécurité.</p>
+            <!-- <a href="#">En savoir plus</a> -->
+        </div>
+        </div>
+    </section>
+    <section id="a-propos">
+        <h1 class="title">Notre OBjectif</h1>
+        <div class="img-desc">
+        <div class="right">
+            <h3>Notre vision</h3>
+            <p>Notre mission est de devenir la plateforme de réservation de billets de bus la plus fiable et la plus facile à utiliser. Nous nous efforçons d'offrir un service client exceptionnel, des prix compétitifs et une vaste gamme d'options de voyage pour répondre aux besoins de tous les voyageurs.</p>
+            {% comment %} <a href="#">En savoir plus</a> {% endcomment %}
+        </div>
+        <div class="left">
+            <video src={% static "image/video.mp4" %} autoplay loop></video>
+        </div>
+        
+        </div>
+    </section>
+    <!--section destination -->
+    <section id="popular-destination">
+        <h1 class="title">Notre Equipe</h1>
+        <div class="content">
+        <!--box-->
+        <div class="box">
+            <img src={% static "image/Cv.jpg" %} alt="">
+            <div class="content">
+            <div>
+                <h4>Mevo Ange-Gael</h4>
+                <p>Directeur génénale</p>
+                <p>Chargé de donner les directives et de coordonner le travail de l'équipe.</p>
+                {% comment %} <a href="#">Lire plus</a> {% endcomment %}
+            </div>
+            </div>
+        </div>
+        <!--box-->
+        <div class="box">
+            <img src={% static "image/video.mp4" %} alt="">
+            <div class="content">
+            <div>
+                <h4>Paris</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
+                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                {% comment %} <a href="#">Lire plus</a> {% endcomment %}
+            </div>
+            </div>
+        </div>
+        <!--box-->
+        <div class="box">
+            <img src={% static "image/video.mp4" %} alt="">
+            <div class="content">
+            <div>
+                <h4>Paris</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
+                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                {% comment %} <a href="#">Lire plus</a> {% endcomment %}
+            </div>
+            </div>
+        </div>
+        <div class="box">
+            <img src={% static "image/video.mp4" %} alt="">
+            <div class="content">
+            <div>
+                <h4>Paris</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
+                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                {% comment %} <a href="#">Lire plus</a> {% endcomment %}
+            </div>
+            </div>
+        </div>
+        <!--box-->
+        </div>
+        <!-- <div class="container">
+        <a href="Destination.html" class="btn-Plus">Voir Plus</a>
+    </div> -->
+    </section>
+    <!-- contact section
+    <section id="contact">
+        <h1 class="title">Contact</h1>
+        <form action="">
+        <div class="left-right">
+            <div class="left">
+            <label>Nom complet</label>
+            <input type="text">
+            <label>Objet</label>
+            <input type="text">
+            <label>Email</label>
+            <input type="text">
+            <label>Message</label>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div class="right">
+            <label>Numéro</label>
+            <input type="text">
+            <label>Date</label>
+            <input type="text">
+            <label>Autre Details</label>
+            <input type="text">
+            <label>Adresse</label>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.1509163873607!2d-3.898867525117988!3d5.393961335258041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc18d10bfa0efe5%3A0x6552832fd69de896!2sUniversit%C3%A9%20Polytechnique%20de%20Bingerville%20(UPB)!5e0!3m2!1sfr!2sci!4v1712916517455!5m2!1sfr!2sci" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <button>Envoyer</button>
+        </form>
+    </section> -->
+
+    <footer>
+        <p>Réalisé par <span>Mevo Ange</span>| Tous les droits sont réservés.</p>
+    </footer>
+
+    <script>
+        var toggle_menu = document.querySelector('.responsive-menu');
+        var menu = document.querySelector('.menu');
+        toggle_menu.onclick = function(){
+        toggle_menu.classList.toggle('active');
+        menu.classList.toggle('responsive')
+        }
+    </script>
+</body>
+</html>
