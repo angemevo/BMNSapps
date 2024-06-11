@@ -1,0 +1,238 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href={% static "css/Destination.css" %}>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href={% url 'home' %}><img id="logo" src={% static "image/Logo.png" %} alt=""></a>
+        </div>
+        <ul class="menu">
+            <li><a href={% url 'home' %}>Acceuil</a></li>
+            <li><a href="#a-propos">A propos</a></li>
+            <li><a href="#">Destination</a></li>
+            <li><a href="#contact">Contacts</a></li>
+            <li><a href={% url 'login' %}>Connexion</a></li>
+        </ul>
+        <a href={% url 'reservation' %} class="btn-reservation">Reserver Maintenant</a>
+    
+        <div class="responsive-menu"></div>
+    </header>
+    <!--section destination -->
+    <section id="popular-destination">
+    <h1 class="title">Destination poupulaire</h1>
+    <div class="content">
+        <!--box-->
+        <div class="box">
+        <img src={% static "image/Abidjan.jpeg" %} alt="">
+        <div class="content">
+            <div>
+            <h4>Abidjan</h4>
+            <p>Abidjan, capitale économique de la Côte d'Ivoire, 
+                est une métropole dynamique située sur la côte atlantique,
+                connue pour ses gratte-ciels modernes, ses lagunes pittoresques et son riche patrimoine culturel. </p>
+            <p>C'est également un important centre financier, commercial et culturel en Afrique de l'Ouest.</p>
+            <a href="#">Lire plus</a>
+            </div>
+        </div>
+        </div>
+        <!--box-->
+        <div class="box">
+            <img src={% static "image/Yammoussoukro.jpg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Yamoussoukro</h4>
+                <p>Yamoussoukro, la capitale politique et administrative de la Côte d'Ivoire, 
+                    est célèbre pour sa Basilique Notre-Dame de la Paix, l'une des plus grandes églises du monde.</p>
+                <p>La ville se distingue également par ses larges boulevards 
+                    et ses lacs artificiels peuplés de crocodiles.</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Man.jpg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Man</h4>
+                <p>Man est une ville de l'ouest de la Côte d'Ivoire, 
+                    réputée pour ses paysages montagneux et ses nombreuses cascades. </p>
+                <p>Elle est aussi connue pour sa riche culture, 
+                    incluant les danses traditionnelles des masques Dan.</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/korhogo.jpg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Korhogo</h4>
+                <p>Korhogo est une ville située au nord de la Côte d'Ivoire, réputée pour son artisanat, 
+                    notamment les textiles, et son riche patrimoine culturel sénoufo. </p>
+                <p>Elle est aussi un important centre économique et culturel de la région.</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Odiene.jpeg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Odiéné</h4>
+                <p>Odiénné est une ville située au nord-ouest de la Côte d'Ivoire, connue pour son artisanat traditionnel 
+                    et son rôle important dans l'économie régionale grâce à ses activités agricoles et minières. </p>
+                <p>C'est également un centre culturel avec des influences mandé et une histoire riche en traditions.</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/San pedro.jpeg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>San Pedro</h4>
+                <p>San Pedro est une ville côtière de Côte d'Ivoire, connue pour ses belles plages et son port industriel important. </p>
+                <p>Elle est également réputée pour sa production de cacao et de café.</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Sassandra.jpeg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Sassandra</h4>
+                <p>
+                    Sassandra est une ville côtière de Côte d'Ivoire, située à l'embouchure du fleuve Sassandra, 
+                    réputée pour ses plages pittoresques et son port de pêche animé. </p>
+                <p>Elle offre un mélange unique de paysages naturels et de patrimoine culturel.</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Seguela.jpeg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Séguéla</h4>
+                <p>Séguéla est une ville située au nord-ouest de la Côte d'Ivoire, 
+                    réputée pour son exploitation de diamants et ses paysages pittoresques. </p>
+                <p>Elle est également connue pour ses traditions culturelles riches et sa diversité ethnique.</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Abengourou.jpeg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Abengourou</h4>
+                <p>Abengourou, située à l'est de la Côte d'Ivoire, est une ville connue pour sa riche culture Akan 
+                    et son rôle important dans la production agricole, notamment le cacao.</p>
+                <p>Elle est également un centre administratif et commercial de la région de l'Indénié-Djuablin</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Bondoukou.jpeg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Bondoukou</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
+                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Dabou.jpeg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Dabou</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
+                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Daloa.jpeg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Daloa</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
+                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Dimbokro.jpeg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Dimbokro</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
+                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Bouaké.png" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Bouaké</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
+                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        <div class="box">
+            <img src={% static "image/Gagnoa.jpeg" %} alt="">
+            <div class="content">
+                <div>
+                <h4>Gagnoa</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
+                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+            <!--box-->
+        
+    </div>
+    </section>
+    <footer>
+        <p>Réalisé par <span>Mevo Ange</span>| Tous les droits sont réservés.</p>
+    </footer>
+    <script>
+        var toggle_menu = document.querySelector('.responsive-menu');
+        var menu = document.querySelector('.menu');
+        toggle_menu.onclick = function(){
+            toggle_menu.classList.toggle('active');
+            menu.classList.toggle('responsive')
+        }
+    </script>
+</body>
+</html>

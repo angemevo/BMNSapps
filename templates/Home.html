@@ -1,0 +1,200 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href= {% static "css/Home.css" %}/>
+    <title>BMNS</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#"><img id="logo" src={% static "image/Logo.png" %} alt="" /></a>
+        </div>
+        <ul class="menu">
+            <li><a href="#">Acceuil</a></li>
+            <li><a href="#a-propos">A propos</a></li>
+            <li><a href={% url 'destination' %}>Destination</a></li>
+            <li><a href="#contact">Contacts</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'profil' %}">Profil</a></li>
+            <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+            {% else%}
+            <li><a href= {% url 'login' %}>Connexion</a></li>
+            {% endif %}
+            
+        </ul>
+        <a href={% url 'reservation' %} class="btn-reservation">Reserver Maintenant</a>
+
+        <div class="responsive-menu"></div>
+    </header>
+    <!-- acceuil section -->
+    <section id="home" style = "background: linear-gradient(rgba(0,0,0,0.1), #333), url(/static/image/acc.png);background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;">
+
+        <h2>Nous suivre,</h2>
+        <h4>C'est voyager dans le confort</h4>
+        <p>Avec BMNS, plus besoin de se rendre sur place pour reserver.</p>
+        <p>Reserver en ligne tout en profitant du confort chez vous.</p>
+        <a href={% url 'reservation' %} class="btn-reservation home-btn">Reserver Maintenant</a>
+        <div class="find_trip">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div>
+                    <label>De</label>
+                    <input type="text" placeholder="Entrez une ville de départ", name = "ville_depart" />
+                </div>
+                <div>
+                    <label>Vers</label>
+                    <input type="text" placeholder="Entrez une ville d'arriver", name = "ville_arrive" />
+                </div>
+                <div>
+                    <label>Date</label>
+                    <input type="date" placeholder="Entrez une Date", name = "date" />
+                </div>
+                <input type="submit" value="Voir" />
+            </form>
+        </div>
+    </section>
+    <!--A propos section-->
+    <section id="a-propos">
+        <h1 class="title">à propos</h1>
+        <div class="img-desc">
+            <div class="left">
+            <video src= {% static "image/video.mp4" %} autoplay loop></video>
+        </div>
+        <div class="right">
+            <h3>
+                Nous vous soutenons pour chaque voyage et service dans le confort et
+                le bonheur.
+            </h3>
+            <p>
+                Plus besoin d'attendre des heures sous un soleil de plomb pour pouvoir acheter un ticket de car.
+                Avec nos services fournit par l'application BMNS, facilitez-vous la vie en reservant en ligne depuis votre domicile.
+            </p>
+            <a href="#">En savoir plus</a>
+        </div>  
+    </section>
+    <!--section destination -->
+    <section id="popular-destination">
+        <h1 class="title">Destination poupulaire</h1>
+        <div class="content">
+            <!--box-->
+            <div class="box">
+            <img src={% static "image/Abidjan.jpeg" %} alt="" />
+            <div class="content">
+                <div>
+                <h4>Abidjan</h4>
+                <p>
+                    Abidjan, capitale économique de la Côte d'Ivoire, 
+                    est une métropole dynamique située sur la côte atlantique,
+                    connue pour ses gratte-ciels modernes, ses lagunes pittoresques et son riche patrimoine culturel.
+                </p>
+                <p> 
+                    C'est également un important centre financier, commercial et culturel en Afrique de l'Ouest.
+                </p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+        <!--box-->
+            <div class="box">
+            <img src={% static "image/Yammoussoukro.jpg" %} alt="" />
+            <div class="content">
+                <div>
+                <h4>Yamoussoukro</h4>
+                <p>
+                    Yamoussoukro, la capitale politique et administrative de la Côte d'Ivoire, 
+                    est célèbre pour sa Basilique Notre-Dame de la Paix, l'une des plus grandes églises du monde.
+                </p>
+                <p>
+                    La ville se distingue également par ses larges boulevards 
+                    et ses lacs artificiels peuplés de crocodiles.
+                </p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+        <!--box-->
+            <div class="box">
+            <img src={% static "image/Man.jpg" %} alt="" />
+            <div class="content">
+                <div>
+                <h4>Man</h4>
+                <p>
+                    Man est une ville de l'ouest de la Côte d'Ivoire, 
+                    réputée pour ses paysages montagneux et ses nombreuses cascades.
+                </p>
+                <p>
+                    Elle est aussi connue pour sa riche culture, 
+                    incluant les danses traditionnelles des masques Dan.
+                </p>
+                <a href="#">Lire plus</a>
+                </div>
+            </div>
+            </div>
+        <!--box-->
+        </div>
+        <div class="container">
+            <a href={% url 'destination' %} class="btn-Plus">Voir Plus</a>
+        </div>
+    </section>
+    <!--contact section-->
+    <section id="contact">
+        <h1 class="title">Contact</h1>
+        <form action="">
+            <div class="left-right">
+                <div class="left">
+                    <label>Nom complet</label>
+                    <input type="text" />
+                    <label>Objet</label>
+                    <input type="text" />
+                    <label>Email</label>
+                    <input type="text" />
+                    <label>Message</label>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div>
+                <div class="right">
+                    <label>Numéro</label>
+                    <input type="text" />
+                    <label>Date</label>
+                    <input type="Date" />
+                    <label>Autre Details</label>
+                    <input type="text" />
+                    <label>Adresse</label>
+                    <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.1509163873607!2d-3.898867525117988!3d5.393961335258041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc18d10bfa0efe5%3A0x6552832fd69de896!2sUniversit%C3%A9%20Polytechnique%20de%20Bingerville%20(UPB)!5e0!3m2!1sfr!2sci!4v1712916517455!5m2!1sfr!2sci"
+                    width="600"
+                    height="450"
+                    style="border: 0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div>
+            </div>
+            <button>Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Réalisé par <span>Mevo Ange</span>| Tous les droits sont réservés.</p>
+    </footer>
+
+    <script>
+        var toggle_menu = document.querySelector(".responsive-menu");
+        var menu = document.querySelector(".menu");
+        toggle_menu.onclick = function () {
+            toggle_menu.classList.toggle("active");
+            menu.classList.toggle("responsive");
+        };
+    </script>
+</body>
+</html>
