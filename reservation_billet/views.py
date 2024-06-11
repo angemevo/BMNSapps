@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
+from weasyprint import HTML
 from django.http import HttpResponse, HttpResponseRedirect
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
@@ -15,7 +17,23 @@ from .models import Trajet, Car, Client, Billet, Reservation
 # Create your views here.
 
 def home(request):
-    return render(request, 'Home.html')
+    villes_depart = Trajet.objects.values_list('Ville_Depart', flat=True).distinct()
+    villes_arrivee = Trajet.objects.values_list('Ville_Arrivée', flat=True).distinct()
+
+    print("Villes de départ:", villes_depart)
+    print("Villes d'arrivée:", villes_arrivee)
+    
+    if request.method == 'POST':
+        ville_depart = request.POST.get('ville_depart')
+        ville_arrive = request.POST.get('ville_arrive')
+        date = request.POST.get('date')
+        
+        trajets = Trajet.objects.filter(Ville_Depart=ville_depart, Ville_Arrivée=ville_arrive, Date=date)
+        
+        return render(request, 'Reservation.html', {'trajets': trajets})
+    else:
+        return render(request, 'Home.html', {'villes_depart': villes_depart, 'villes_arrivee': villes_arrivee})
+
 
 def singin(request):
     if request.method == "POST":
@@ -57,38 +75,48 @@ def deconnexion(request):
     
 
 def reservation(request):
+    villes_depart = Trajet.objects.values_list('Ville_Depart', flat=True).distinct()
+    villes_arrivee = Trajet.objects.values_list('Ville_Arrivée', flat=True).distinct()
+
+    print("Villes de départ:", villes_depart)
+    print("Villes d'arrivée:", villes_arrivee)
+
+    trajets = []
+    ville_depart = ''
+    ville_arrive = ''
+
     if request.method == 'POST':
         ville_depart = request.POST.get('ville_depart')
         ville_arrive = request.POST.get('ville_arrive')
         
-        # Recherche du trajet correspondant aux villes de départ et d'arrivée
-        try:
-            trajet = Trajet.objects.filter(Ville_Depart=ville_depart, Ville_Arrivée=ville_arrive)
-        except Trajet.DoesNotExist:
-            trajet = None
-        
-        return render(request, 'Reservation.html', {'trajet': trajet})
-    else:
-        return render(request, 'Reservation.html')
+        trajets = Trajet.objects.filter(Ville_Depart=ville_depart, Ville_Arrivée=ville_arrive)
+
+    return render(request, 'Reservation.html', {
+        'villes_depart': villes_depart,
+        'villes_arrivee': villes_arrivee,
+        'trajets': trajets,
+        'selected_ville_depart': ville_depart,
+        'selected_ville_arrive': ville_arrive,
+    })
 
 def destination(request):
     return render(request, 'Destination.html')
 
-def home(request):
-    if request.method == 'POST':
-        ville_depart = request.POST.get('ville_depart')
-        ville_arrive = request.POST.get('ville_arrive')
-        date = request.POST.get('date')
+# def home(request):
+#     if request.method == 'POST':
+#         ville_depart = request.POST.get('ville_depart')
+#         ville_arrive = request.POST.get('ville_arrive')
+#         date = request.POST.get('date')
         
-        # Recherche du trajet correspondant aux villes de départ et d'arrivée
-        try:
-            trajet = Trajet.objects.filter(Ville_Depart=ville_depart, Ville_Arrivée=ville_arrive, Date=date)
-        except Trajet.DoesNotExist:
-            trajet = None
+#         # Recherche du trajet correspondant aux villes de départ et d'arrivée
+#         try:
+#             trajet = Trajet.objects.filter(Ville_Depart=ville_depart, Ville_Arrivée=ville_arrive, Date=date)
+#         except Trajet.DoesNotExist:
+#             trajet = None
         
-        return render(request, 'Reservation.html', {'trajet': trajet})
-    else:
-        return render(request, 'Home.html')
+#         return render(request, 'Reservation.html', {'trajet': trajet})
+#     else:
+#         return render(request, 'Home.html')
 
 
 def show_reservation_form(request, trajet_id):
@@ -102,57 +130,6 @@ def show_reservation_form(request, trajet_id):
     }
     return render(request, 'Reserver.html', context)
 
-# def reserver(request, trajet_id):
-#     trajet = get_object_or_404(Trajet, id=trajet_id)
-#     car = trajet.car
-#     sieges_disponibles = range(1, car.Capacité - car.sieges_reserves + 1)
-#     context = {
-#         'trajet': trajet,
-#         'car': car,
-#         'sieges_disponibles': sieges_disponibles,
-#     }
-
-#     if request.method == 'POST':
-#         seat_number = int(request.POST.get('seat_number'))
-#         try:
-#             client = get_object_or_404(Client, user=request.user)
-#         except Client.DoesNotExist:
-#             return HttpResponse("Client not found", status=404)
-
-#         try:
-#             # Création du billet
-#             billet = Billet.objects.create(
-#                 Date_Voyage=trajet.Date,
-#                 Destination=trajet.Ville_Arrivée,
-#                 Depart=trajet.Ville_Depart,
-#                 Numéro_Siège=seat_number,
-#                 Prix=trajet.Prix
-#             )
-
-#             # Création de la réservation
-#             reservation = Reservation.objects.create(
-#                 client=client,
-#                 trajet=trajet,
-#                 Statut='Réservé',
-#                 Depart=trajet.Ville_Depart,
-#                 Destination=trajet.Ville_Arrivée,
-#                 Numéro_Siège=seat_number,
-#                 Prix=trajet.Prix,
-#                 billet=billet
-#             )
-
-#             # Mise à jour du nombre de sièges réservés dans la voiture
-#             car.sieges_reserves += 1
-#             car.save()
-
-#             return redirect('reservation_success')
-#         except Exception as e:
-#             print(f"Error during reservation: {e}")
-#             return HttpResponse("Error during reservation process", status=500)
-
-#     return render(request, 'reserver.html', context)
-
-
 def confirmation(request):
     return render(request, 'Succes_reservation.html')
 
@@ -164,66 +141,50 @@ def confirmation_page(request):
 
 
 
-def reservation_voyage(request,trajet_id):
+def reservation_voyage(request, trajet_id):
     user = request.user
     client = Client.objects.get(user=user)
-    trajet = Trajet.objects.get(id = trajet_id)
+    trajet = Trajet.objects.get(id=trajet_id)
     car_siege = trajet.car.Capacité
-    car_siege_liste = [i for i in range(1, car_siege + 1)]  # Inclure la dernière capacité
-    reservation_liste = Billet.objects.filter(Reservation__trajet=trajet)  # Filtrer par trajet spécifique
+    car_siege_liste = [i for i in range(1, car_siege + 1)]
+    
+    reservation_liste = Billet.objects.filter(Reservation__trajet=trajet)
     car = [siege for siege in car_siege_liste if siege not in [reservation.Numéro_Siège for reservation in reservation_liste]]
-            
-    # car = range(1, trajet.car.Capacité - trajet.car.sieges_reserves + 1)
+
     if request.method == 'POST':
+        # Récupérer les données du formulaire
+        seat_number = request.POST.get('siege')
         nom = request.POST.get('nom')
         prenom = request.POST.get('prenom')
         contact = request.POST.get('contact')
-        siege = request.POST.get('siege')
-        try:
-            contact = int(contact)
-        except Exception as e:
-            print(f"Error during reservation: {e}")
-        
-        reserve = Reservation.objects.create(
-            client=client,
-            trajet=trajet
-        )
-        
-        billet = Billet.objects.create(
-            Destination = trajet.Ville_Arrivée,
-            Depart = trajet.Ville_Depart,
-            Numéro_Siège = siege,
-            Prix = trajet.Prix,
-            Nom_Voyageur = nom,
-            Prenom_Voyageur = prenom,
-            Contact_Voyageur = contact,
-            Reservation = reserve
-            
-        )
-        
+
+        # Déterminer le prix du billet
+        prix = trajet.Prix  # Assumant que le prix du trajet est stocké dans l'objet `trajet`
+
+        # Créer une nouvelle réservation et billet
+        reservation = Reservation.objects.create(trajet=trajet, client=client)
+        billet = Billet.objects.create(Reservation=reservation, Nom_Voyageur=nom, Prenom_Voyageur=prenom, Numéro_Siège=seat_number, Prix=prix)
+
+        # Contexte pour le template
+        context = {
+            'billet': billet,
+            'trajet': trajet,
+            'client': client,
+        }
+
         # Générer le PDF
-        response = HttpResponse(content_type='application/pdf')
+        html_string = render_to_string('print_ticket.html', context)
+        html = HTML(string=html_string)
+        pdf_file = html.write_pdf()
+
+        # Retourner le PDF comme réponse
+        response = HttpResponse(pdf_file, content_type='application/pdf')
         response['Content-Disposition'] = f'attachment; filename="billet_{billet.id}.pdf"'
-        p = canvas.Canvas(response, pagesize=A4)
-
-        # Ajouter du contenu au PDF
-        p.drawString(100, 800, "Billet de Voyage")
-        p.drawString(100, 780, f"Nom: {billet.Nom_Voyageur}")
-        p.drawString(100, 760, f"Prénom: {billet.Prenom_Voyageur}")
-        p.drawString(100, 740, f"Contact: {billet.Contact_Voyageur}")
-        p.drawString(100, 720, f"Départ: {billet.Depart}")
-        p.drawString(100, 700, f"Destination: {billet.Destination}")
-        p.drawString(100, 680, f"Numéro de Siège: {billet.Numéro_Siège}")
-        p.drawString(100, 660, f"Prix: {billet.Prix}")
-
-        p.showPage()
-        p.save()
-
         return response
-        
-        
-    return render(request, 'Reserver.html', {'place':car})
-    
+
+    return render(request, 'Reserver.html', {'place': car})
+
+
 
 def billet(request):
     return render(request, 'Billet.html')
@@ -240,3 +201,37 @@ def profil(request):
 
 def about(request):
     return render(request, 'About.html')
+
+def generate_ticket(request):
+    if request.method == 'POST':
+        # Récupérer les données du formulaire
+        car_id = request.POST.get('car_id')
+        seat_number = request.POST.get('siege')
+        nom = request.POST.get('nom')
+        prenom = request.POST.get('prenom')
+        contact = request.POST.get('contact')
+        
+        # Créer ou récupérer le trajet
+        trajet = get_object_or_404(Trajet, id=car_id)
+        
+        # Créer une nouvelle réservation et billet
+        reservation = Reservation.objects.create(trajet=trajet, client=request.user)
+        billet = Billet.objects.create(Reservation=reservation, Nom_Voyageur=nom, Prenom_Voyageur=prenom, Numéro_Siège=seat_number)
+        
+        # Contexte pour le template
+        context = {
+            'billet': billet,
+            'trajet': trajet,
+            'client': request.user,
+        }
+
+        # Générer le PDF
+        html_string = render_to_string('print_ticket.html', context)
+        html = HTML(string=html_string)
+        pdf_file = html.write_pdf()
+
+        # Retourner le PDF comme réponse
+        response = HttpResponse(pdf_file, content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="billet_{billet.id}.pdf"'
+        return response
+    return redirect('reservation')  # Rediriger en cas de méthode GET ou erreur

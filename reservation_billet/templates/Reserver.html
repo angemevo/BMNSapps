@@ -15,7 +15,7 @@
         <ul class="menu">
             <li><a href={% url 'home' %}>Accueil</a></li>
             <li><a href={% url 'about' %}>A propos</a></li>
-            <li><a href={% url 'destination' %}>Destination</a></li>
+            {% comment %} <li><a href={% url 'destination' %}>Destination</a></li> {% endcomment %}
             <li><a href="#contact">Contacts</a></li>
             {% if user.is_authenticated %}
             <li><a href={% url 'profil' %}>Profil</a></li>
@@ -45,7 +45,7 @@
                 
                 <!-- Choisir un siège -->
                 <div>
-                    <label for="seat_number">Numéro de siège:</label>
+                    <label for="seat_number">Choisissez le numéro de siège:</label>
                     <select id="seat_number" name="siege">
                         {% for seat in place %}
                         <option value="{{ seat }}">{{ seat }}</option>

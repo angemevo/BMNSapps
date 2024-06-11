@@ -146,6 +146,15 @@ header{
     margin-bottom: 10px;
 }
 
+.find_trip form select{
+    border: 2px solid #FF690F;
+    background-color: #151C21;
+    color: #999;
+    font-size: 15px;
+    /* border-radius: 5px; */
+    height: 30px;
+}
+
 .find_trip form input{
     padding: 5px 20px;
     background-color: transparent;

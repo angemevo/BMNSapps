@@ -1,36 +1,33 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href= {% static "css/Reservation.css" %}/>
+    <link rel="stylesheet" href="{% static 'css/Reservation.css' %}" />
     <title>BMNS</title>
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href={% url 'home' %}><img id="logo" src={% static "image/Logo.png" %} alt="" /></a>
+            <a href="{% url 'home' %}"><img id="logo" src="{% static 'image/Logo.png' %}" alt="Logo" /></a>
         </div>
         <ul class="menu">
-            <li><a href={% url 'home' %}>Acceuil</a></li>
-            <li><a href={% url 'about' %}>A propos</a></li>
-            <li><a href={% url 'destination' %}>Destination</a></li>
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'about' %}">À propos</a></li>
             <li><a href="#contact">Contacts</a></li>
             {% if user.is_authenticated %}
-            <li><a href={% url 'profil' %}>Profil</a></li>
-            <li><a href={% url 'logout' %}>Déconnexion</a></li>
-            {% else%}
-            <li><a href= {% url 'login' %}>Connexion</a></li>
+            <li><a href="{% url 'profil' %}">Profil</a></li>
+            <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Connexion</a></li>
             {% endif %}
-            
         </ul>
-        <a href={% url 'reservation' %} class="btn-reservation">Reserver Maintenant</a>
-
+        <a href="{% url 'reservation' %}" class="btn-reservation">Réserver Maintenant</a>
         <div class="responsive-menu"></div>
     </header>
-    <!-- acceuil section -->
-    <section id="home" style = "background: linear-gradient(rgba(0,0,0,0.1), #333), url(/static/image/acc.png);
+
+    <section id="home" style="background: linear-gradient(rgba(0,0,0,0.1), #333), url({% static 'image/acc.png' %});
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -40,137 +37,70 @@
     flex-direction: column;
     position: relative;">
         <h2>Nous suivre</h2>
-        <h4>Voyagez en securité</h4>
+        <h4>Voyagez en sécurité</h4>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <p>Dicta praesentium dignissimos cumque delectus.</p>
-        <a href="#" class="btn-reservation home-btn">Reserver Maintenant</a>
+        <a href="#" class="btn-reservation home-btn">Réserver Maintenant</a>
         <div class="find_trip">
             <form action="" method="post">
                 {% csrf_token %}
                 <div>
-                    <label>De</label>
-                    <input type="text" placeholder="Entrez une ville de départ", name = "ville_depart">
+                    <label for="ville_depart">De</label>
+                    <select name="ville_depart" id="ville_depart">
+                        <option value="">Sélectionnez une ville de départ</option>
+                        {% for ville in villes_depart %}
+                            <option value="{{ ville }}" {% if ville == selected_ville_depart %}selected{% endif %}>{{ ville }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div>
-                    <label>Vers</label>
-                    <input type="text" placeholder="Entrez une ville d'arriver", name = "ville_arrive">
+                    <label for="ville_arrive">Vers</label>
+                    <select name="ville_arrive" id="ville_arrive">
+                        <option value="">Sélectionnez une ville d'arrivée</option>
+                        {% for ville in villes_arrivee %}
+                            <option value="{{ ville }}" {% if ville == selected_ville_arrive %}selected{% endif %}>{{ ville }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <input type="submit" value="Voir">
             </form>
         </div>
     </section>
-<!--resultats de recherche-->
+
     <section id="recherche">
         <div class="banner">
-            <span id="result-count"></span> {{trajet| length  }} résultats trouvés
+            <span id="result-count"></span> {{ trajets|length }} résultats trouvés
         </div>
-        {% for trajet in trajet %}
+        {% for trajet in trajets %}
         <div class="card">
             <div class="card-header">
-                <div class="card-title">{{trajet.Ville_Depart}} - {{trajet.Ville_Arrivée}}</div>
-                <div class="card-price">{{trajet.Prix}} Francs CFA</div>
+                <div class="card-title">{{ trajet.Ville_Depart }} - {{ trajet.Ville_Arrivée }}</div>
+                <div class="card-price">{{ trajet.Prix }} Francs CFA</div>
             </div>
             <div class="card-body">
-                <div class="card-travels">Profitez d'un voyage vers {{trajet.Ville_Arrivée}} avec la compagnie UTB</div>
-                <div class="card-date">Date: {{trajet.Date}}</div>
+                <div class="card-travels">Profitez d'un voyage vers {{ trajet.Ville_Arrivée }} avec la compagnie UTB</div>
+                <div class="card-date">Date: {{ trajet.Date }}</div>
                 <div class="card-duration">Durée: 2 h 00 min</div>
-                <div class="card-details">Depart prévu à {{trajet.Heure_Depart}} - Arrivée prévue à {{trajet.Heure_Arrivée}}</div>
+                <div class="card-details">Départ prévu à {{ trajet.Heure_Depart }} - Arrivée prévue à {{ trajet.Heure_Arrivée }}</div>
             </div>
             <div class="card-footer">
                 {% if user.is_authenticated %}
-                    {% comment %} <a href="{% url 'show_reservation_form' trajet.id %}">Reserver</a> {% endcomment %}
-                    <a href="{% url 'reserve' trajet.id %}">Reserver</a>
-                {% else%}
-                    <a href={% url 'login' %}>Connecter vous</a>
-                    <p>veuillez vous connecter avant de poursuivre la reservation</p>
+                    <a href="{% url 'reserve' trajet.id %}">Réserver</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Connectez-vous</a>
+                    <p>Veuillez vous connecter avant de poursuivre la réservation</p>
                 {% endif %}
             </div>
         </div>
         {% endfor %}
-        {% comment %} <div class="card">
-            <div class="card-header">
-                <div class="card-title">Yammoussoukro - Abidjan</div>
-                <div class="card-price">2000 Francs CFA</div>
-            </div>
-            <div class="card-body">
-                <div class="card-travels">Profitez d'un voyage vers Abidjan avec la compagnie UTB</div>
-                <div class="card-date">Date: 20 Mai 2024</div>
-                <div class="card-duration">Durée: 2 h 00 min</div>
-                <div class="card-details">Depart prévu à 11 h 00 min - Arrivée prévue à 13 h 00 min</div>
-            </div>
-            <div class="card-footer">
-                <a href="#">Reserver</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Yammoussoukro - Abidjan</div>
-                <div class="card-price">2000 Francs CFA</div>
-            </div>
-            <div class="card-body">
-                <div class="card-travels">Profitez d'un voyage vers Abidjan avec la compagnie UTB</div>
-                <div class="card-date">Date: 20 Mai 2024</div>
-                <div class="card-duration">Durée: 2 h 00 min</div>
-                <div class="card-details">Depart prévu à 14 h 00 min - Arrivée prévue à 16 h 00 min</div>
-            </div>
-            <div class="card-footer">
-                <a href="#">Reserver</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Yammoussoukro - Abidjan</div>
-                <div class="card-price">2000 Francs CFA</div>
-            </div>
-            <div class="card-body">
-                <div class="card-travels">Profitez d'un voyage vers Abidjan avec la compagnie UTB</div>
-                <div class="card-date">Date: 20 Mai 2024</div>
-                <div class="card-duration">Durée: 2 h 00 min</div>
-                <div class="card-details">Depart prévu à 18 h 00 min - Arrivée prévue à 20 h 30 min</div>
-            </div>
-            <div class="card-footer">
-                <a href="#">Reserver</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Yammoussoukro - Abidjan</div>
-                <div class="card-price">2000 Francs CFA</div>
-            </div>
-            <div class="card-body">
-                <div class="card-travels">Profitez d'un voyage vers Abidjan avec la compagnie UTB</div>
-                <div class="card-date">Date: 20 Mai 2024</div>
-                <div class="card-duration">Durée: 2 h 00 min</div>
-                <div class="card-details">Depart prévu à 21 h 00 min - Arrivée prévue à 23 h 00 min</div>
-            </div>
-            <div class="card-footer">
-                <a href="#">Reserver</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Yammoussoukro - Abidjan</div>
-                <div class="card-price">2000 Francs CFA</div>
-            </div>
-            <div class="card-body">
-                <div class="card-travels">Profitez d'un voyage vers Abidjan avec la compagnie UTB</div>
-                <div class="card-date">Date: 21 Mai 2024</div>
-                <div class="card-duration">Durée: 2 h 00 min</div>
-                <div class="card-details">Depart prévu à 04 h 00 min - Arrivée prévue à 06 h 30 min</div>
-            </div>
-            <div class="card-footer">
-                <a href="#">Reserver</a>
-            </div>
-        </div> {% endcomment %}
     </section>
-
 
     <script>
         var toggle_menu = document.querySelector('.responsive-menu');
         var menu = document.querySelector('.menu');
         toggle_menu.onclick = function(){
             toggle_menu.classList.toggle('active');
-            menu.classList.toggle('responsive')
+            menu.classList.toggle('responsive');
         }
     </script>
 </body>

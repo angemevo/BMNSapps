@@ -1,36 +1,33 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href= {% static "css/Home.css" %}/>
+    <link rel="stylesheet" href="{% static 'css/Home.css' %}" />
     <title>BMNS</title>
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="#"><img id="logo" src={% static "image/Logo.png" %} alt="" /></a>
+            <a href="#"><img id="logo" src="{% static 'image/Logo.png' %}" alt="" /></a>
         </div>
         <ul class="menu">
             <li><a href="#">Acceuil</a></li>
-            <li><a href={% url 'about' %}>A propos</a></li>
-            <li><a href={% url 'destination' %}>Destination</a></li>
-            {% comment %} <li><a href="#contact">Contacts</a></li> {% endcomment %}
+            <li><a href="{% url 'about' %}">A propos</a></li>
+            <li><a href="#contact">Contacts</a></li>
             {% if user.is_authenticated %}
-            <li><a href={% url 'profil' %}>Profil</a></li>
-            <li><a href={% url 'logout' %}>Déconnexion</a></li>
-            {% else%}
-            <li><a href= {% url 'login' %}>Connexion</a></li>
+            <li><a href="{% url 'profil' %}">Profil</a></li>
+            <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Connexion</a></li>
             {% endif %}
-            
         </ul>
-        <a href={% url 'reservation' %} class="btn-reservation">Reserver Maintenant</a>
+        <a href="{% url 'reservation' %}" class="btn-reservation">Reserver Maintenant</a>
 
         <div class="responsive-menu"></div>
     </header>
-    <!-- acceuil section -->
-    <section id="home" style = "background: linear-gradient(rgba(0,0,0,0.1), #333), url(/static/image/acc.png);background-position: center;
+    <section id="home" style="background: linear-gradient(rgba(0,0,0,0.1), #333), url(/static/image/acc.png);background-position: center;
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -38,26 +35,43 @@
     justify-content: center;
     flex-direction: column;
     position: relative;">
-
         <h2>Nous suivre,</h2>
         <h4>C'est voyager dans le confort</h4>
         <p>Avec BMNS, plus besoin de se rendre sur place pour reserver.</p>
         <p>Reserver en ligne tout en profitant du confort chez vous.</p>
-        <a href={% url 'reservation' %} class="btn-reservation home-btn">Reserver Maintenant</a>
+        <a href="{% url 'reservation' %}" class="btn-reservation home-btn">Reserver Maintenant</a>
         <div class="find_trip">
             <form action="" method="post">
                 {% csrf_token %}
                 <div>
                     <label>De</label>
-                    <input type="text" placeholder="Entrez une ville de départ", name = "ville_depart" />
+                    <select name="ville_depart">
+                        <option value="">Sélectionnez une ville de départ</option>
+                        {% if villes_depart %}
+                            {% for ville in villes_depart %}
+                            <option value="{{ ville }}">{{ ville }}</option>
+                            {% endfor %}
+                        {% else %}
+                            <option value="">Aucune ville disponible</option>
+                        {% endif %}
+                    </select>
                 </div>
                 <div>
                     <label>Vers</label>
-                    <input type="text" placeholder="Entrez une ville d'arriver", name = "ville_arrive" />
+                    <select name="ville_arrive">
+                        <option value="">Sélectionnez une ville d'arrivée</option>
+                        {% if villes_arrivee %}
+                            {% for ville in villes_arrivee %}
+                            <option value="{{ ville }}">{{ ville }}</option>
+                            {% endfor %}
+                        {% else %}
+                            <option value="">Aucune ville disponible</option>
+                        {% endif %}
+                    </select>
                 </div>
                 <div>
                     <label>Date</label>
-                    <input type="date" placeholder="Entrez une Date", name = "date" />
+                    <input type="date" name="date" />
                 </div>
                 <input type="submit" value="Voir" />
             </form>
@@ -79,7 +93,7 @@
                 Plus besoin d'attendre des heures sous un soleil de plomb pour pouvoir acheter un ticket de car.
                 Avec nos services fournit par l'application BMNS, facilitez-vous la vie en reservant en ligne depuis votre domicile.
             </p>
-            <a href="#">En savoir plus</a>
+            <a href={% url 'about' %}>En savoir plus</a>
         </div>  
     </section>
     <!--section destination -->
@@ -100,7 +114,6 @@
                 <p> 
                     C'est également un important centre financier, commercial et culturel en Afrique de l'Ouest.
                 </p>
-                <a href="#">Lire plus</a>
                 </div>
             </div>
             </div>
@@ -118,7 +131,7 @@
                     La ville se distingue également par ses larges boulevards 
                     et ses lacs artificiels peuplés de crocodiles.
                 </p>
-                <a href="#">Lire plus</a>
+            
                 </div>
             </div>
             </div>
@@ -136,14 +149,10 @@
                     Elle est aussi connue pour sa riche culture, 
                     incluant les danses traditionnelles des masques Dan.
                 </p>
-                <a href="#">Lire plus</a>
                 </div>
             </div>
             </div>
         <!--box-->
-        </div>
-        <div class="container">
-            <a href={% url 'destination' %} class="btn-Plus">Voir Plus</a>
         </div>
     </section>
     <!--contact section-->

@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Billet d'Avion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .ticket {
+            width: 600px;
+            margin: 20px auto;
+            border: 2px solid #000;
+            border-radius: 10px;
+            overflow: hidden;
+            page-break-inside: avoid; /* Ensure the ticket doesn't split across pages */
+        }
+        .ticket-header {
+            background-color: #376b8d;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ticket-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .ticket-logo {
+            height: 50px;
+        }
+        .ticket-body {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .ticket-section {
+            width: 48%;
+        }
+        .ticket-section p {
+            margin: 5px 0;
+        }
+        .ticket-footer {
+            background-color: #eee;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .ticket-footer p {
+            margin: 0;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .ticket-image {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .ticket-image img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket">
+        <div class="ticket-header">
+            <img src="{% static 'image/Logo.png' %}" alt="Logo" class="ticket-logo">
+            <h1>BMNS-VOYAGE</h1>
+            <h2>Economy Class</h2>
+        </div>
+        <div class="ticket-body">
+            <div class="ticket-section">
+                <p class="bold">Numéro de car:</p>
+                <p>{{ trajet.car }}</p>
+                <p class="bold">De:</p>
+                <p>{{ trajet.Ville_Depart }}</p>
+                <p class="bold">A:</p>
+                <p>{{ trajet.Ville_Arrivée }}</p>
+            </div>
+            <div class="ticket-section">
+                <p class="bold">Passager:</p>
+                <p>{{ billet.Prenom_Voyageur }} {{ billet.Nom_Voyageur }}</p>
+                <p class="bold">Heure embarquement:</p>
+                <p>{{ trajet.Heure_Depart }}</p>
+                <p class="bold">Siège:</p>
+                <p>{{ billet.Numéro_Siège }}</p>
+            </div>
+        </div>
+        <div class="ticket-image">
+            <img src="{% static 'image/acc.png' %}" alt="Image de Voyage">
+        </div>
+        <div class="ticket-footer">
+            <p>&copy; 2024 BMNS-VOYAGE. Merci de nous avoir choisis.</p>
+        </div>
+    </div>
+    <script>
+        window.print();
+    </script>
+</body>
+</html>

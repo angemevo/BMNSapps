@@ -186,7 +186,8 @@ header{
 }
 
 .user-info li {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .user-info a {

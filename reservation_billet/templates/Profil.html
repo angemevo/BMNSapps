@@ -13,7 +13,7 @@
 			<ul class="menu">
 				<li><a href={% url 'home' %}>Acceuil</a></li>
                 <li><a href={% url 'about' %}>A propos</a></li>
-            <li><a href={% url 'destination' %}>Destination</a></li>
+            {% comment %} <li><a href={% url 'destination' %}>Destination</a></li> {% endcomment %}
             {% comment %} <li><a href="#contact">Contacts</a></li> {% endcomment %}
             <li><a href={% url 'profil' %}>Profil</a></li>
 				{% comment %} <li><a href={% url 'login' %}>Connexion</a></li> {% endcomment %}
@@ -37,7 +37,7 @@
                     <ul>
                         <li><a href="#" data-target="info-personnelles">Informations personnelles</a></li>
                         <li><a href="#" data-target="mes-reservations">Mes réservations</a></li>
-                        <li><a href="#">Déconnexion</a></li>
+                        <li><a href={% url 'logout' %}>Déconnexion</a></li>
                     </ul>
                 </div>
                 <div id="info-personnelles" class="user-settings">

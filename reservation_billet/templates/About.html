@@ -16,7 +16,7 @@
             <ul class="menu">
                 <li><a href={% url 'home' %}>Acceuil</a></li>
                 <li><a href={% url 'about' %}>A propos</a></li>
-                <li><a href={% url 'destination' %}>Destination</a></li>
+                {% comment %} <li><a href={% url 'destination' %}>Destination</a></li> {% endcomment %}
                 {% comment %} <li><a href="#contact">Contacts</a></li> {% endcomment %}
                 {% if user.is_authenticated %}
                 <li><a href={% url 'profil' %}>Profil</a></li>
@@ -43,7 +43,7 @@
         <h1 class="title">Qui nous sommes et ce que nous faisons</h1>
         <div class="img-desc">
         <div class="left">
-            <video src={% static "image/video.mp4" %} autoplay loop></video>
+            <img src={% static "image/team.jpg" %} alt="">
         </div>
         <div class="right">
             <h3>A propros de BMNS</h3>
@@ -61,7 +61,7 @@
             {% comment %} <a href="#">En savoir plus</a> {% endcomment %}
         </div>
         <div class="left">
-            <video src={% static "image/video.mp4" %} autoplay loop></video>
+            <img src={% static "image/Bus.jpg" %} alt="">
         </div>
         
         </div>
@@ -84,35 +84,35 @@
         </div>
         <!--box-->
         <div class="box">
-            <img src={% static "image/video.mp4" %} alt="">
+            <img src={% static "image/Mambe.jpg" %} alt="">
             <div class="content">
             <div>
-                <h4>Paris</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
-                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                <h4>Mambe Marcelin Josué</h4>
+                <p>Developpeur Backends</p>
+                <p>Membre de l'équipe chargé de la conception</p>
                 {% comment %} <a href="#">Lire plus</a> {% endcomment %}
             </div>
             </div>
         </div>
         <!--box-->
         <div class="box">
-            <img src={% static "image/video.mp4" %} alt="">
+            <img src={% static "image/Abiola.jpg" %} alt="">
             <div class="content">
             <div>
-                <h4>Paris</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
-                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                <h4>Salami Abiola</h4>
+                <p>Concepteur Web</p>
+                <p>Membre de l'equipe chargé de la conception de maquette du site</p>
                 {% comment %} <a href="#">Lire plus</a> {% endcomment %}
             </div>
             </div>
         </div>
         <div class="box">
-            <img src={% static "image/video.mp4" %} alt="">
+            <img src={% static "image/Pasta.jpg" %} alt="">
             <div class="content">
             <div>
-                <h4>Paris</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum distinctio </p>
-                <p>perferendis ad nemo itaque at reiciendis quibusdam quasi, officia aspernatur consequatur</p>
+                <h4>Begue Prince</h4>
+                <p>Developpeur Backends</p>
+                <p>Membre de l'équipe chargé de la conception</p>
                 {% comment %} <a href="#">Lire plus</a> {% endcomment %}
             </div>
             </div>
