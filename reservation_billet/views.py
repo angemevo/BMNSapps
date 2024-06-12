@@ -41,15 +41,21 @@ def singin(request):
         if form.is_valid():
             pseudo = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-        
-            user = authenticate(request, username=pseudo, password=password)
-        
-            if user is not None:
-                login(request, user)
-                messages.success(request, 'Vous êtes connecté')
-                return redirect("home")
+
+            # Vérifier si le mot de passe est trop court
+            if len(password) < 8:
+                messages.error(request, 'Le mot de passe doit contenir au moins 8 caractères.')
             else:
-                messages.error(request, "Nom d'utilisateur ou mot de passe incorect" )
+                user = authenticate(request, username=pseudo, password=password)
+
+                if user is not None:
+                    login(request, user)
+                    messages.success(request, 'Vous êtes connecté')
+                    return redirect("home")
+                else:
+                    messages.error(request, "Nom d'utilisateur ou mot de passe incorrect")
+        else:
+            messages.error(request, "Nom d'utilisateur ou mot de passe incorrect")
     else:
         form = AuthenticationForm()
     return render(request, 'Login.html', {"form": form})
@@ -102,23 +108,6 @@ def reservation(request):
 def destination(request):
     return render(request, 'Destination.html')
 
-# def home(request):
-#     if request.method == 'POST':
-#         ville_depart = request.POST.get('ville_depart')
-#         ville_arrive = request.POST.get('ville_arrive')
-#         date = request.POST.get('date')
-        
-#         # Recherche du trajet correspondant aux villes de départ et d'arrivée
-#         try:
-#             trajet = Trajet.objects.filter(Ville_Depart=ville_depart, Ville_Arrivée=ville_arrive, Date=date)
-#         except Trajet.DoesNotExist:
-#             trajet = None
-        
-#         return render(request, 'Reservation.html', {'trajet': trajet})
-#     else:
-#         return render(request, 'Home.html')
-
-
 def show_reservation_form(request, trajet_id):
     trajet = get_object_or_404(Trajet, id=trajet_id)
     car = trajet.car
@@ -129,17 +118,6 @@ def show_reservation_form(request, trajet_id):
         'sieges_disponibles': sieges_disponibles,
     }
     return render(request, 'Reserver.html', context)
-
-def confirmation(request):
-    return render(request, 'Succes_reservation.html')
-
-def error(request):
-    return render(request, 'error.html')
-        
-def confirmation_page(request):
-    return render(request, 'confirmation.html')
-
-
 
 def reservation_voyage(request, trajet_id):
     user = request.user

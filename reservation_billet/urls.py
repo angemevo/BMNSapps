@@ -13,7 +13,6 @@ urlpatterns = [
     path('profil/', views.profil, name="profil"),
     path('deconnexion/', views.deconnexion, name="logout"),
     path('reserver/<int:trajet_id>/', views.show_reservation_form, name='show_reservation_form'),
-    path('confirmation/', views.confirmation, name="confirmation"),
     path("reserve/<int:trajet_id>/", views.reservation_voyage, name='reserve'),
     path('billet/<int:billet_id>/', views.billet, name="billet"),
     path('about/', views.about, name="about"),

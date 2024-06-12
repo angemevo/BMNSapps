@@ -295,8 +295,97 @@ header{
     font-weight: bold;
 }
 
+footer{
+    margin-top: 200px;
+    width: 100%;
+    background-color: #222;
+    padding: 10px 0;
+    font-size: 14px;
+    text-align: center;
+}
 
+.footerContainer{
+    width: 100%;
+    padding: 20px 30px 20px;
+}
 
+.socialIcons{
+    display: flex;
+    justify-content: center;
+}
+
+.socialIcons a{
+    text-emphasis: none;
+    padding: 10px;
+    background-color: aliceblue;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.socialIcons a i{
+    font-size: 2em;
+    color: black;
+    opacity: 0.9;
+}
+
+.socialIcons a:hover{
+    background-color: #FF690F;
+    transition: 0.5s;
+}
+
+.socialIcons a:hover{
+    color: aliceblue;
+    transition: 0.5s;
+}
+
+.footerNav{
+    margin: 30px 0;
+}
+
+.footerNav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.footerNav ul li a{
+    color: aliceblue;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.footerNav ul li a:hover{
+    opacity: 1;
+}
+
+.footerBottom{
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+}
+
+.footerBottom p{
+    color: #FFFFFF;
+}
+
+.designer{
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+}
+
+footer p {
+    color: #FFFFFF;
+}
+
+footer p span{
+    color: #FF690F;
+}
 
 /*Responsivité*/
 @media screen and (max-width:1360px) {
